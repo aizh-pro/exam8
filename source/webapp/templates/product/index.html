@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+   <h1>Products</h1>
+
+   {% for product in products %}
+        <h2><a href="{% url '#' product.pk %}">{{ product.pk }}.{{ product.name }}</a></h2>
+{#    <p><a href="{% url 'webapp:project_view' project.pk %}">Подробнее</a></p>#}
+   {% endfor %}
+      {% if is_paginated %}
+
+    {% endif %}
+{% endblock %}
