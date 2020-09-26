@@ -72,6 +72,7 @@ class ProductUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('webapp:product_view', kwargs={'pk': self.object.pk})
 
+
 class ProductDeleteView(DeleteView):
     template_name = 'product/product_delete.html'
     model = Product
