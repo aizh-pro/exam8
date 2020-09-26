@@ -16,7 +16,7 @@ class Product(models.Model):
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Описание')
     category = models.CharField(max_length=20, default=DEFAULT_CATEGORY, choices=CATEGORY_CHOICES,
                                 verbose_name='Категория')
-    picture = models.ImageField(null=True, blank=True, upload_to='user_pics', verbose_name='Картинка')
+    picture = models.ImageField(null=True, blank=True, upload_to='pics', verbose_name='Картинка')
 
 
     def __str__(self):
@@ -44,8 +44,7 @@ RATE_CHOICES = ((DEFAULT_RATE, 0),
 class Review(models.Model):
     product = models.ForeignKey('webapp.Product', related_name='review', on_delete=models.CASCADE, verbose_name='Продукт')
     text = models.TextField(max_length=2000,verbose_name='Текст')
-    rate = models.IntegerField(max_length=20, default=DEFAULT_RATE, choices=RATE_CHOICES,
-                                verbose_name='Оценка')
+    rate = models.IntegerField(default=DEFAULT_RATE, choices=RATE_CHOICES,verbose_name='Оценка')
     author = models.ForeignKey(get_user_model(), on_delete=models.SET_DEFAULT, default=1,
                                related_name='reviews', verbose_name='Автор')
 

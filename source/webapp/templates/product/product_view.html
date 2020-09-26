@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}View{% endblock %}
+{% block menu %}
+
+{#     <li><a href="{% url 'webapp:task_create' project.pk %}">Create Task</a></li>#}
+{% endblock %}
+{% block content %}
+    <h1>Detailed product page</h1>
+    <p><b>Title:</b> {{ product.name}}</p>
+     <p><b>Product id:</b> {{ product.pk }}</p>
+    <p><b>Description:</b>{{ product.description }}</p>
+    <p><b>Product category:</b>{{ product.category }}</p>
+    <img class="picture" src="{{ product.picture.url }}" width="250" height="250" alt="picture">
+
+
+{% comment %}    {% if perms.webapp.change_project and request.user in project.user.all %}{% endcomment %}
+{#    <p><a href="{% url 'webapp:project_update' project.pk %}"  class="btn btn-warning">Update</a></p>#}
+{#    {% endif %}#}
+{#    {% if perms.webapp.add_user and request.user in project.user.all %}#}
+{#     <p><a href="{% url 'webapp:project_user' project.pk %}"  class="btn btn-warning">Add/Remove User</a></p>#}
+{#      {% endif %}#}
+{#    {% if perms.webapp.delete_project and request.user in project.user.all%}#}
+{#    <p><a href="{% url 'webapp:project_delete' project.pk %}" class="btn btn-danger">Delete</a></p>#}
+{#    {% endif %}#}
+     <hr>
+{#        <h3>Tasks</h3>#}
+{#        {% if is_paginated %}#}
+{#            {% include 'partial/pagination.html' %}#}
+{#        {% endif %}#}
+{#        {% for task in tasks %}#}
+{#            <div class="box">#}
+{#                 <h4><a href="{% url 'webapp:task_view' task.pk %}">{{ task.pk }}.{{ task.title }}</a></h4>#}
+{#                <div class="pre">{{ task.description }}</div>#}
+{#            </div>#}
+{#        {% empty %}#}
+{#            <p>Нет задач</p>#}
+{#        {% endfor %}#}
+{#        {% if is_paginated %}#}
+{#            {% include 'partial/pagination.html' %}#}
+{#        {% endif %}#}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:product_view' product.pk %}">Отмена</a></li>
+{% endblock %}
+
+{% block content %}
+    <h3>Вы уверены, что хотите удалить "{{ product.name }}"?</h3>
+    <p>Category {{ product.category }} </p>
+       <form action="{% url "webapp:product_delete" product.pk %}" method="post">
+        {% csrf_token %}
+        <p><input class="btn btn-danger" type="submit" value="Удалить"></p>
+        <a href="{% url 'webapp:product_view' product.pk  %}" class="btn btn-primary" role="button" aria-pressed="true">Отмена</a>
+    </form>
+    <h3>Описание проекта: </h3>
+    <p>{{ product.description }}</p>
+{% endblock %}

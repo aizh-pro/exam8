@@ -4,11 +4,14 @@
 
    <h1>Products</h1>
 
+    {% if is_paginated %}
+   {% include 'partial/pagination.html' %}
+    {% endif %}
    {% for product in products %}
-        <h2><a href="{% url '#' product.pk %}">{{ product.pk }}.{{ product.name }}</a></h2>
-{#    <p><a href="{% url 'webapp:project_view' project.pk %}">Подробнее</a></p>#}
+        <h2><a href="{% url 'webapp:product_view' product.pk %}">{{ product.pk }}.{{ product.name }}</a></h2>
+    <p><a href="{% url 'webapp:product_view' product.pk %}">Подробнее</a></p>
    {% endfor %}
       {% if is_paginated %}
-
+   {% include 'partial/pagination.html' %}
     {% endif %}
 {% endblock %}
